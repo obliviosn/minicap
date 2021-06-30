@@ -15,7 +15,8 @@
 
 package io.devicefarmer.minicap.utils
 
-import android.util.Size
+import io.devicefarmer.minicap.Size
+
 
 data class DisplayInfo(
     val displayId: Int,

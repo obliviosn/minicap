@@ -21,12 +21,13 @@ import android.net.LocalSocket
 import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
-import android.util.Size
+import io.devicefarmer.minicap.Size
 import io.devicefarmer.minicap.output.ScreenshotOutput
 import io.devicefarmer.minicap.utils.DisplayInfo
 import io.devicefarmer.minicap.utils.DisplayManagerGlobal
 import io.devicefarmer.minicap.utils.SurfaceControl
 import java.io.PrintStream
+import java.net.Socket
 import kotlin.system.exitProcess
 
 /**
@@ -68,7 +69,7 @@ class SurfaceProvider(targetSize: Size) : BaseProvider(targetSize) {
     /**
      *
      */
-    override fun onConnection(socket: LocalSocket) {
+    override fun onConnection(socket: Socket) {
         super.onConnection(socket)
         initSurface()
     }

@@ -16,7 +16,7 @@
 package io.devicefarmer.minicap.utils
 
 import android.annotation.SuppressLint
-import android.util.Size
+import io.devicefarmer.minicap.Size
 
 /**
  * Get DisplayInfo through DisplayManagerGlobal singleton (similar to what is done in MinitouchAgent)

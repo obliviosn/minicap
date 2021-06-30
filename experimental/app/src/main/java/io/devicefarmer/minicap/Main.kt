@@ -16,7 +16,6 @@
 package io.devicefarmer.minicap
 
 import android.os.Looper
-import android.util.Size
 import io.devicefarmer.minicap.provider.SurfaceProvider
 import kotlin.math.roundToInt
 import kotlin.system.exitProcess

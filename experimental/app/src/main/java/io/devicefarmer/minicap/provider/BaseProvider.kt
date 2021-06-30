@@ -15,18 +15,20 @@
 
 package io.devicefarmer.minicap.provider
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.PixelFormat
+import android.graphics.PixelFormat.*
 import android.media.Image
 import android.media.ImageReader
-import android.net.LocalSocket
-import android.util.Size
 import io.devicefarmer.minicap.output.DisplayOutput
 import io.devicefarmer.minicap.output.MinicapClientOutput
 import io.devicefarmer.minicap.SimpleServer
+import io.devicefarmer.minicap.Size
 import org.slf4j.LoggerFactory
 import java.io.OutputStream
 import java.io.PrintStream
+import java.net.Socket
 import java.nio.ByteBuffer
 
 /**
@@ -63,17 +65,18 @@ abstract class BaseProvider(private val targetSize: Size) : SimpleServer.Listene
     fun getTargetSize(): Size = targetSize
     fun getImageReader(): ImageReader = imageReader
 
+    @SuppressLint("WrongConstant")
     fun init(out: DisplayOutput) {
         imageReader = ImageReader.newInstance(
             getTargetSize().width,
             getTargetSize().height,
-            PixelFormat.RGBA_8888,
+            1,
             2
         )
         clientOutput = out
     }
 
-    override fun onConnection(socket: LocalSocket) {
+    override fun onConnection(socket: Socket) {
         clientOutput = MinicapClientOutput(socket).apply {
             sendBanner(getScreenSize(),getTargetSize())
         }
@@ -112,7 +115,7 @@ abstract class BaseProvider(private val targetSize: Size) : SimpleServer.Listene
             ).apply {
                 copyPixelsFromBuffer(buffer)
             }.run {
-                //the image need to be cropped
+                //the image need to be cropped,剪裁
                 Bitmap.createBitmap(this, 0, 0, getTargetSize().width, getTargetSize().height)
             }.apply {
                 compress(Bitmap.CompressFormat.JPEG, q, out)
