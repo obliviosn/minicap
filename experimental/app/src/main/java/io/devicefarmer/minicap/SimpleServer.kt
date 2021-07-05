@@ -26,7 +26,10 @@ import java.net.Socket
 /**
  * Minimalist "server" to bootstrap development
  */
-class SimpleServer(private val socket: String, private val listener: Listener) {
+class SimpleServer(private val socket: String, private val listener: Listener) : Runnable {
+
+    var thread = Thread(this)
+
     companion object {
         val log: Logger = LoggerFactory.getLogger(SimpleServer::class.java.simpleName)
     }
@@ -36,6 +39,10 @@ class SimpleServer(private val socket: String, private val listener: Listener) {
     }
 
     fun start() {
+        thread.start()
+    }
+
+    override fun run() {
         try {
             val serverSocket = ServerSocket(2333)
             log.info("Listening on socket : ${serverSocket}")
@@ -44,7 +51,5 @@ class SimpleServer(private val socket: String, private val listener: Listener) {
         } catch (e: IOException) {
             log.error("error waiting connection", e)
         }
-
-
     }
 }
