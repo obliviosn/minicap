@@ -40,6 +40,9 @@ if [ "$1" = "autosize" ]; then
   shift
 fi
 
+echo  $args
+
+
 # Create a directory for our resources
 dir=/data/local/tmp/minicap-devel
 # Keep compatible with older devices that don't have `mkdir -p`.
@@ -50,17 +53,23 @@ adb push libs/$abi/$bin $dir
 
 # Upload the shared library
 if [ -e jni/minicap-shared/aosp/libs/android-$rel/$abi/minicap.so ]; then
+  echo "STEP1"
   adb push jni/minicap-shared/aosp/libs/android-$rel/$abi/minicap.so $dir
   adb shell LD_LIBRARY_PATH=$dir $dir/$bin $args "$@"
+  echo $LD_LIBRARY_PATH
 else
-  if [ -e jni/minicap-shared/aosp/libs/android-$sdk/$abi/minicap.so ]; then
+  if [ -e jni/minicap-shared/aosp/libs/android-$sdk/$abi/minicap222.so ]; then
+    echo "STEP2"
     adb push jni/minicap-shared/aosp/libs/android-$sdk/$abi/minicap.so $dir
     adb shell LD_LIBRARY_PATH=$dir $dir/$bin $args "$@"
+    echo $LD_LIBRARY_PATH
   else
+       echo "STEP3"
     adb push experimental/app/build/outputs/apk/debug/minicap-debug.apk $dir
     adb shell CLASSPATH=$dir/minicap-debug.apk $apk $args "$@"
+     echo $CLASSPATH
   fi
 fi
 
 # Clean up
-adb shell rm -r $dir
+#adb shell rm -r $dir
