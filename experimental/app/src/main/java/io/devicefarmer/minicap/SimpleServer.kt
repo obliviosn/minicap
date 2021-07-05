@@ -28,7 +28,7 @@ import java.net.Socket
  */
 class SimpleServer(private val socket: String, private val listener: Listener) {
     companion object {
-        val log: Logger = LoggerFactory.getLogger(Main::class.java.simpleName)
+        val log: Logger = LoggerFactory.getLogger(SimpleServer::class.java.simpleName)
     }
 
     interface Listener {
