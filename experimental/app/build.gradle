@@ -22,15 +22,29 @@ plugins {
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
-
+    signingConfigs {
+        debug {
+            storeFile file("./key/fidc.keystore")
+            storePassword 'fidc2020'
+            keyAlias 'fidc'
+            keyPassword 'fidc2020'
+        }
+        release {
+            storeFile file("./key/fidc.keystore")
+            storePassword 'fidc2020'
+            keyAlias 'fidc'
+            keyPassword 'fidc2020'
+        }
+    }
     defaultConfig {
         applicationId "io.devicefarmer.minicap"
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 30
         versionCode 2
         versionName "0.7"
         archivesBaseName = "minicap"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.debug
     }
 
     buildTypes {

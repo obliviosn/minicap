@@ -20,27 +20,38 @@ import android.net.LocalSocket
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import java.io.IOException
+import java.net.ServerSocket
+import java.net.Socket
 
 /**
  * Minimalist "server" to bootstrap development
  */
 class SimpleServer(private val socket: String, private val listener: Listener) {
+    var thread = ServerThread(listener)
+
     companion object {
-        val log: Logger = LoggerFactory.getLogger(Main::class.java.simpleName)
+        val log: Logger = LoggerFactory.getLogger(SimpleServer::class.java.simpleName)
     }
 
     interface Listener {
-        fun onConnection(socket: LocalSocket)
+        fun onConnection(socket: Socket)
     }
 
     fun start() {
-        try {
-            val serverSocket = LocalServerSocket(socket)
-            log.info("Listening on socket : ${socket}")
-            val clientSocket: LocalSocket = serverSocket.accept()
-            listener.onConnection(clientSocket)
-        } catch (e: IOException) {
-            log.error("error waiting connection", e)
+        thread.start()
+    }
+
+    class ServerThread(val listener: Listener) : Thread() {
+        override fun run() {
+            try {
+                val serverSocket = ServerSocket(2333)
+                log.info("Listening on socket : ${serverSocket}")
+                val clientSocket: Socket = serverSocket.accept()
+                listener.onConnection(clientSocket)
+            } catch (e: IOException) {
+                log.error("error waiting connection", e)
+            }
         }
+
     }
 }
