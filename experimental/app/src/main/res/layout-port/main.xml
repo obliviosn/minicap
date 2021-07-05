@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/lib/com.google.ads"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+            android:layout_width="@dimen/layout_width"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+        <LinearLayout
+                android:id="@+id/layoutResolution"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/list_selector_background"
+                android:padding="@dimen/layout_padding">
+
+            <CheckBox
+                    android:id="@+id/cbResolution"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Resolution"
+                    android:textSize="@dimen/text_size" />
+
+            <TextView
+                    android:id="@+id/tvResolutionSub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="x"
+                    android:textSize="@dimen/text_size" />
+
+            <TextView
+                    android:id="@+id/tvResolution"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="1"
+                    android:textSize="@dimen/text_size" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/layoutTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/list_selector_background"
+                android:padding="@dimen/layout_padding">
+
+            <CheckBox
+                    android:id="@+id/cbTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Time"
+                    android:textSize="@dimen/text_size" />
+
+            <TextView
+                    android:id="@+id/tvTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="1"
+                    android:textSize="@dimen/text_size" />
+
+            <TextView
+                    android:id="@+id/tvTimeSub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/text_margin"
+                    android:gravity="right"
+                    android:text="sec"
+                    android:textSize="@dimen/text_size" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/layoutBitrate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/list_selector_background"
+                android:padding="@dimen/layout_padding">
+
+            <CheckBox
+                    android:id="@+id/cbBitrate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bitrate"
+                    android:textSize="@dimen/text_size" />
+
+            <TextView
+                    android:id="@+id/tvBitrate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="2"
+                    android:textSize="@dimen/text_size" />
+
+            <TextView
+                    android:id="@+id/tvBitrateSub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/text_margin"
+                    android:gravity="right"
+                    android:text="Mbps"
+                    android:textSize="@dimen/text_size" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/layoutCountDown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/list_selector_background"
+                android:padding="@dimen/layout_padding">
+
+            <CheckBox
+                    android:id="@+id/cbCountDown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Countdown"
+                    android:textSize="@dimen/text_size" />
+
+            <TextView
+                    android:id="@+id/tvCountDown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="2"
+                    android:textSize="@dimen/text_size" />
+
+            <TextView
+                    android:id="@+id/tvCountDownSub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/text_margin"
+                    android:gravity="right"
+                    android:text="sec"
+                    android:textSize="@dimen/text_size" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/layout_padding">
+
+            <CheckBox
+                    android:id="@+id/cbRotate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rotate"
+                    android:textSize="@dimen/text_size" />
+        </LinearLayout>
+
+        <Button
+                android:id="@+id/button1"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/button_margin_top"
+                android:background="@drawable/button_record_selector"
+                android:padding="@dimen/text_margin"
+                android:text="Record"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/text_size"
+                android:textStyle="bold" />
+    </LinearLayout>
+</RelativeLayout>

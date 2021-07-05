@@ -20,12 +20,13 @@ class HomeActivity : Activity() {
         btnStart = findViewById(R.id.btn_start_service)
         btnStart?.setOnClickListener {
             var sucess = upgradeRootPermission(packageCodePath)
-            if (sucess) {
-                Toast.makeText(this, "请求超级权限成功", Toast.LENGTH_SHORT).show()
-                startSocketAndCaptureService()
-            } else {
-                Toast.makeText(this, "请求超级权限失败", Toast.LENGTH_SHORT).show()
-            }
+//            if (sucess) {
+//                Toast.makeText(this, "请求超级权限成功", Toast.LENGTH_SHORT).show()
+//                startSocketAndCaptureService()
+//            } else {
+//                Toast.makeText(this, "请求超级权限失败", Toast.LENGTH_SHORT).show()
+//            }
+            startSocketAndCaptureService()
         }
     }
 
